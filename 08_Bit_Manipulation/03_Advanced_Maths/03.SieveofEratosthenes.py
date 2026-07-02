@@ -4,17 +4,20 @@
 class Solution:
 
     def countPrimes(self, n: int) -> int:
+        #because no prime nos. smaller than 0&1
         if n <= 2:
             return 0
 
-        # Initialize an array tracking primality
+        # Create boolean arr and fill entirely with true
         is_prime = [True] * n
+        #set 0&1 to False manually
         is_prime[0] = is_prime[1] = False
 
-        # Only loop up to sqrt(n)
+        # Start from 2 till rootN
         for i in range(2, int(n**0.5) + 1):
+            #check if surrent element is stil marked True
             if is_prime[i]:
-                # Mark multiples starting from i*i
+                # start,stop,skip
                 is_prime[i * i : n : i] = [False] * len(
                     range(i * i, n, i)
                 )
