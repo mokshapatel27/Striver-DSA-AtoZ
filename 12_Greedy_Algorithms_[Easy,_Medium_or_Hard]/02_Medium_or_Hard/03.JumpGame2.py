@@ -1,0 +1,15 @@
+#https://leetcode.com/problems/jump-game-ii/description/
+
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        jumps=0
+        currend=0
+        farthest=0
+
+        for i in range(len(nums)-1):
+            farthest=max(farthest,i+nums[i])
+
+            if i==currend:
+                jumps+=1
+                currend=farthest
+        return jumps
